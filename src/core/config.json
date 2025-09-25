@@ -1,0 +1,9 @@
+{
+    "MILVUS_HOST": "localhost",
+    "MILVUS_PORT": "19530",
+    "OLLAMA_API_URL": "http://localhost:11434/api/generate",
+    "chunks_path": "D:/pyproject/PythonProject3/data/processed/chunks.json",
+    "parent_docs_path": "D:/pyproject/PythonProject3/data/processed/parent_documents.json",
+    "text_model_path": "D:/Models/bge-m3",
+    "code_model_path": "D:/Models/gte-large-zh"
+}
