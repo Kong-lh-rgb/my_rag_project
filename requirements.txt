@@ -1,13 +1,8 @@
-
 playwright
 requests
 beautifulsoup4
-
-
 PyMuPDF
 openpyxl
-
-
 langchain
 openai
 dashscope
@@ -15,7 +10,5 @@ erniebot
 chromadb
 pydantic
 tiktoken
-
-
 fastapi
 uvicorn

@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 
 
-# Pydantic 模型，用于定义API请求和响应的数据结构
+
 class QueryRequest(BaseModel):
     query: str
     top_k: int = 5
@@ -33,15 +33,15 @@ async def lifespan(app: FastAPI):
     print("正在初始化 RAG 系统...")
     try:
         retrieval_system = RetrievalSystem("config.json")
-        print("✅ RAG 系统初始化成功！")
+        print("RAG 系统初始化成功！")
     except Exception as e:
-        print(f"❌ RAG 系统初始化失败: {e}")
+        print(f"RAG 系统初始化失败: {e}")
         raise HTTPException(status_code=500, detail=f"系统初始化失败: {e}")
 
     yield
 
     print("正在关闭 RAG 系统...")
-    print("✅ RAG 系统已关闭。")
+    print("RAG 系统已关闭。")
 
 app = FastAPI(
     title="RAG System API",
@@ -51,7 +51,6 @@ app = FastAPI(
 
 retrieval_system = None
 
-# 使用通配符 * 来确保 CORS 策略能够匹配所有来源
 origins = ["*"]
 
 app.add_middleware(
@@ -62,7 +61,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 显式添加一个 OPTIONS 方法处理函数来确保 CORS 预检请求能得到正确响应
 @app.options("/query")
 async def handle_options_request():
     return JSONResponse(content={"message": "Preflight request successful"})
@@ -101,3 +99,12 @@ async def handle_query(request: QueryRequest):
     except Exception as e:
         print(f"处理查询时发生错误: {e}")
         raise HTTPException(status_code=500, detail=f"处理查询时发生错误: {e}")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "src.core.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True
+    )

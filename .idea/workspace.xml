@@ -4,26 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b46ad5b-f079-4bc6-9cf2-d72828f257cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/PythonProject3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/about.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/embeddings/prepare_documents.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/getdocuments.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/retriever.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/data_preprocessor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/get_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/pdf_paser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tets1.py" afterDir="false" />
+    <list default="true" id="5b46ad5b-f079-4bc6-9cf2-d72828f257cf" name="Changes" comment="完成">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,29 +45,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.encode.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.prepare_documents.executor": "Run",
-    "Python.rag.executor": "Run",
-    "Python.retriever.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.tets1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/pyproject/PythonProject3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.encode.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prepare_documents.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.retriever.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tets1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/pyproject/PythonProject3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\pyproject\PythonProject3\src\core" />
@@ -112,12 +94,35 @@
       <workItem from="1758584840516" duration="16521000" />
       <workItem from="1758608608661" duration="12452000" />
       <workItem from="1758621712384" duration="3338000" />
-      <workItem from="1758690447899" duration="11972000" />
+      <workItem from="1758690447899" duration="13299000" />
+      <workItem from="1758788434977" duration="881000" />
+      <workItem from="1758882033620" duration="6000" />
+      <workItem from="1758885294727" duration="28000" />
+      <workItem from="1760070974523" duration="661000" />
+      <workItem from="1760072745692" duration="624000" />
+      <workItem from="1760079727440" duration="7000" />
+      <workItem from="1760259057128" duration="45000" />
+      <workItem from="1760865043213" duration="2661000" />
+      <workItem from="1760930125060" duration="11000" />
+      <workItem from="1760953589157" duration="25000" />
     </task>
+    <task id="LOCAL-00001" summary="完成">
+      <option name="closed" value="true" />
+      <created>1758778742177</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758778742177</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProject3$rag.coverage" NAME="rag Coverage Results" MODIFIED="1758609903650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/core" />

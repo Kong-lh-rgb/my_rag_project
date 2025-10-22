@@ -98,10 +98,10 @@ class RetrievalSystem:
             )
             response.raise_for_status()
             rewritten_query = response.json()['response'].strip()
-            print(f"✅ 查询重写完成，重写后的查询为：'{rewritten_query}'")
+            print(f"查询重写完成，重写后的查询为：'{rewritten_query}'")
             return rewritten_query
         except Exception as e:
-            print(f"❌ 查询重写失败：{e}。将使用原始查询。")
+            print(f"查询重写失败：{e}。将使用原始查询。")
             return query
 
 
@@ -117,11 +117,8 @@ class RetrievalSystem:
         Returns:
             list: 经过处理后的关键词列表。
         """
-        # 1. 精确模式分词
-        # jieba.cut() 返回一个生成器，需要转换为列表
         tokens = jieba.cut(query, cut_all=False)
 
-        # 2. 过滤停用词并保留有意义的词
         processed_tokens = [word for word in tokens if word not in stop_words and len(word.strip()) > 0]
 
         return processed_tokens
@@ -144,11 +141,9 @@ class RetrievalSystem:
 
         print(f"\n正在执行混合检索，查询：'{query}'")
 
-        # 获取Milvus Collection
         collection = Collection("rag_documents")
         collection.load()
 
-        # 向量搜索
         query_vector = self.text_model.encode(query)
         search_params = {"metric_type": "L2", "params": {"nprobe": 10}}
         vector_search_results = collection.search(
@@ -159,9 +154,9 @@ class RetrievalSystem:
             output_fields=["pk", "parent_id"]
         )[0]
         vector_rank = {hit.id: (1 / (rank + 1)) for rank, hit in enumerate(vector_search_results)}
-        print(f"✅ 完成向量搜索，得到 {len(vector_search_results)} 个结果。")
+        print(f"完成向量搜索，得到 {len(vector_search_results)} 个结果。")
 
-        # 关键词搜索
+
         query_tokens = self.process_query(query)
         print(f"处理后的查询关键词：{query_tokens}")
         bm25_scores = self.bm25.get_scores(query_tokens)
@@ -170,9 +165,9 @@ class RetrievalSystem:
         for rank, idx in enumerate(sorted_indices[:top_k]):
             doc_id = self.child_chunks[idx]['id']
             bm25_rank[doc_id] = (1 / (rank + 1))
-        print(f"✅ 完成关键词搜索，得到 {len(bm25_rank)} 个结果。")
+        print(f"完成关键词搜索，得到 {len(bm25_rank)} 个结果。")
 
-        # RRF结果融合
+
         rrf_scores = {}
         for doc_id, score in vector_rank.items():
             rrf_scores[doc_id] = rrf_scores.get(doc_id, 0) + score
@@ -180,7 +175,7 @@ class RetrievalSystem:
             rrf_scores[doc_id] = rrf_scores.get(doc_id, 0) + score
         final_ranks = sorted(rrf_scores.items(), key=lambda x: x[1], reverse=True)[:top_k]
 
-        # 父文档检索
+
         retrieved_contexts = []
         seen_parent_ids = set()
         for doc_id, score in final_ranks:
@@ -304,10 +299,9 @@ class RetrievalSystem:
         返回:
             dict: 包含检索结果和生成回复的字典
         """
-        # 1. 检索相关文档
+
         retrieved_docs = self.hybrid_search(query, top_k=top_k, rewrite=rewrite)
 
-        # 2. 生成最终回复
         generated_response = self.last(query,retrieved_docs)
 
         return {

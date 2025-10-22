@@ -4,16 +4,16 @@ import uuid
 import tiktoken
 import json
 
-# --- 1. 设置路径和切分参数 ---
+
 print("--- 1. 设置文档路径和切分参数 ---")
 TORCH_DOCS_PATH = r"D:\pyproject\PythonProject3\data\origin\origin_torch"
 TRANSFORMERS_DOCS_PATH = r"D:\pyproject\PythonProject3\data\origin\origin_transformers"
 
-# 小粒度切分参数
+
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
 
-# 正则表达式用于匹配Markdown中的标题和代码块
+
 TITLE_PATTERN = re.compile(r'^(#+)\s*(.*)', re.MULTILINE)
 CODE_BLOCK_PATTERN = re.compile(r'```(?:[^\n]*)\n(.*?)```', re.DOTALL)
 
@@ -25,7 +25,7 @@ def parse_markdown_with_titles(content, parent_id):
     chunks = []
     last_end = 0
 
-    # 找到所有标题和代码块的起始位置
+
     matches = list(TITLE_PATTERN.finditer(content))
     code_matches = list(CODE_BLOCK_PATTERN.finditer(content))
 
@@ -36,30 +36,24 @@ def parse_markdown_with_titles(content, parent_id):
         start, end = match.span()
         block_content = content[last_end:start].strip()
 
-        # 处理标题前的文本内容
         if block_content:
             chunks.extend(chunk_content(block_content, 'text', parent_id, current_title))
 
-        # 处理当前匹配项
         if match.re == TITLE_PATTERN:
-            # 这是一个标题
             title_level = len(match.group(1))
             title_text = match.group(2).strip()
-            # 记录当前标题，用于后续内容
             current_title = title_text
         elif match.re == CODE_BLOCK_PATTERN:
-            # 这是一个代码块
             code_content = match.group(1).strip()
             if code_content:
                 chunks.extend(chunk_content(code_content, 'code', parent_id, current_title))
 
         last_end = end
 
-    # 处理最后一个匹配项之后的内容
+
     remaining_text = content[last_end:].strip()
     if remaining_text:
         chunks.extend(chunk_content(remaining_text, 'text', parent_id, current_title))
-
     return chunks
 
 
@@ -75,7 +69,7 @@ def chunk_content(content, content_type, parent_id, section_title):
         chunk_tokens = tokens[i:i + CHUNK_SIZE]
         chunk_content = encoding.decode(chunk_tokens)
 
-        # 在内容中加上标题，增强语义信息
+
         enriched_content = f"标题：{section_title}\n\n{chunk_content}"
 
         chunks.append({
@@ -103,7 +97,6 @@ def get_all_chunks_from_dirs(root_dirs):
                         parent_id = os.path.relpath(file_path, root_dir)
                         parent_documents[parent_id] = file_content
 
-                    # 使用新的解析函数
                     chunks = parse_markdown_with_titles(file_content, parent_id)
                     all_chunks.extend(chunks)
 
